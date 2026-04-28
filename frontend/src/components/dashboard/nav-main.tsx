@@ -117,7 +117,7 @@ function NavItems({ items }: { items: NavItem[] }) {
 export function NavMain() {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Menu</SidebarGroupLabel>
+      <SidebarGroupLabel>Workspace</SidebarGroupLabel>
       <SidebarMenu>
         <NavItems items={NAV_ITEMS} />
       </SidebarMenu>
