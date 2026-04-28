@@ -25,24 +25,25 @@ export default function SurveyHeader({ survey }: SurveyHeaderProps) {
     },
   });
 
- const handleToggle = async () => {
-  try {
-    await toggleSurvey.mutateAsync({ surveyId: survey.id });
+  const handleToggle = async () => {
+    try {
+      await toggleSurvey.mutateAsync({ surveyId: survey.id });
 
-    toast.success(
-      survey.is_active ? "Survey unpublished" : "Survey published"
-    );
-  } catch (error) {
-    toast.error((error as Error).message);
-  }
-};
+      toast.success(survey.is_active ? "Survey unpublished" : "Survey published");
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
+  };
 
   return (
-    <div className="flex items-center justify-between">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">{survey.title}</h2>
+    <div className="page-shell flex flex-col gap-6 px-6 py-6 md:flex-row md:items-end md:justify-between md:px-8">
+      <div className="space-y-3">
+        <span className="eyebrow">Survey Overview</span>
+        <h2 className="font-display text-4xl leading-none md:text-5xl">
+          {survey.title}
+        </h2>
 
-        <div className="flex items-center mt-2 space-x-2">
+        <div className="mt-2 flex items-center space-x-2">
           <span className="text-sm text-muted-foreground">Status:</span>
 
           {survey.is_active ? (
@@ -59,7 +60,7 @@ export default function SurveyHeader({ survey }: SurveyHeaderProps) {
         </div>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button onClick={handleToggle} disabled={toggleSurvey.isPending}>
           {toggleSurvey.isPending && (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
