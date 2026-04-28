@@ -44,18 +44,22 @@ export function NavUser() {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
+              className="cursor-pointer rounded-2xl border border-sidebar-border/60 bg-white/4 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
+              <Avatar className="h-9 w-9 rounded-2xl ring-1 ring-white/15">
                 <AvatarImage src={avatar} alt={displayName} />
-                <AvatarFallback className="rounded-lg">
+                <AvatarFallback className="rounded-2xl bg-sidebar-primary/20 text-sidebar-foreground">
                   {fallback}
                 </AvatarFallback>
               </Avatar>
 
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{displayName}</span>
-                <span className="truncate text-xs">{email}</span>
+                <span className="truncate font-medium text-sidebar-foreground">
+                  {displayName}
+                </span>
+                <span className="truncate text-xs text-sidebar-foreground/62">
+                  {email}
+                </span>
               </div>
 
               <ChevronsUpDown className="ml-auto size-4" />
@@ -63,7 +67,7 @@ export function NavUser() {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-2xl border border-border/70 bg-popover/92 backdrop-blur-xl"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}
