@@ -70,23 +70,33 @@ export default function NewSurveyPage() {
   const isSubmitting = createSurvey.isPending || addQuestions.isPending;
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight">Create New Survey</h2>
-        <p className="text-muted-foreground">
-          Setup a privacy-first video survey with exactly 5 Yes/No questions.
-        </p>
-      </div>
+    <div className="mx-auto max-w-4xl space-y-8">
+      <section className="page-shell px-6 py-7 md:px-8 md:py-8">
+        <div className="max-w-2xl space-y-4">
+          <span className="eyebrow">New Survey</span>
+          <div className="space-y-3">
+            <h2 className="section-title">
+              Create a form that feels short, crisp, and demo-ready.
+            </h2>
+            <p className="section-copy">
+              Use a simple title and five quick yes-or-no prompts so the survey
+              stays fast on camera and easy to complete.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Card>
-          <CardHeader>
-            <CardTitle>Survey Details</CardTitle>
+        <Card className="border-border/70 bg-card/88">
+          <CardHeader className="border-b border-border/70 pb-5">
+            <CardTitle className="font-display text-3xl leading-none">
+              Survey Details
+            </CardTitle>
             <CardDescription>
               All questions must be answerable with a simple Yes or No.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-8 pt-6">
             <Field data-invalid={!!errors.title}>
               <FieldLabel htmlFor="title">Survey Title</FieldLabel>
               <Input
@@ -98,7 +108,7 @@ export default function NewSurveyPage() {
               {errors.title && <FieldError>{errors.title.message}</FieldError>}
             </Field>
 
-            <div className="space-y-4 pt-4 border-t">
+            <div className="space-y-4 rounded-[1.75rem] border border-border/70 bg-background/65 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7),0_20px_40px_-32px_rgba(20,29,47,0.35)] backdrop-blur-sm">
               <Label className="font-semibold">The 5 Questions</Label>
               <FieldGroup>
                 {[...Array(5)].map((_, index) => {
@@ -118,7 +128,7 @@ export default function NewSurveyPage() {
               </FieldGroup>
             </div>
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
               {isSubmitting && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
