@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Plus, Video, Loader2 } from "lucide-react";
+import { Plus, Video, Loader2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,24 +17,39 @@ export default function SurveysPage() {
 
   return (
     <div className="flex-1 space-y-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-3xl font-bold tracking-tight">My Surveys</h2>
-          <p className="text-muted-foreground">
-            Manage your video survey campaigns.
-          </p>
-        </div>
-        <Button asChild>
-          <Link href="/new">
-            <Plus className="mr-2 h-4 w-4" />
-            Create Survey
-          </Link>
-        </Button>
-      </div>
+      <section className="page-shell px-6 py-7 md:px-8 md:py-8">
+        <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl space-y-4">
+            <span className="eyebrow">Campaigns</span>
+            <div className="space-y-3">
+              <h2 className="section-title">Every survey, styled and ready to publish.</h2>
+              <p className="section-copy max-w-xl">
+                Jump between drafts, live links, and response review without
+                losing context.
+              </p>
+            </div>
+          </div>
 
-      <Card>
+          <Button asChild size="lg">
+            <Link href="/new">
+              <Plus className="mr-1 h-4 w-4" />
+              Create Survey
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      <Card className="border-border/70 bg-card/88">
         <CardHeader>
-          <CardTitle>All Surveys</CardTitle>
+          <div className="flex items-center gap-2 text-primary">
+            <Sparkles className="h-4 w-4" />
+            <span className="text-xs font-semibold uppercase tracking-[0.22em]">
+              Library
+            </span>
+          </div>
+          <CardTitle className="font-display text-3xl leading-none">
+            All Surveys
+          </CardTitle>
           <CardDescription>
             View and manage all your created surveys.
           </CardDescription>
@@ -52,23 +67,26 @@ export default function SurveysPage() {
           ) : (
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {surveys.map((survey) => (
-                <Card key={survey.id} className="flex flex-col justify-between">
+                <Card
+                  key={survey.id}
+                  className="flex flex-col justify-between border-border/70 bg-linear-to-br from-card to-background/76"
+                >
                   <CardHeader>
                     <CardTitle className="text-lg">{survey.title}</CardTitle>
                     <CardDescription>
                       {survey.is_active ? (
-                        <span className="text-green-600 font-medium">
+                        <span className="font-medium text-green-600">
                           Published
                         </span>
                       ) : (
-                        <span className="text-orange-500 font-medium">
+                        <span className="font-medium text-orange-500">
                           Draft
                         </span>
                       )}
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="secondary" className="w-full" asChild>
+                    <Button variant="outline" className="w-full" asChild>
                       <Link href={`/surveys/${survey.id}`}>Manage</Link>
                     </Button>
                   </CardContent>
