@@ -351,7 +351,7 @@ export default function TakeSurveyPage() {
   if (!survey || !survey.is_active || survey.questions?.length !== 5) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
-        <Card className="w-full max-w-md text-center">
+        <Card className="page-shell w-full max-w-md text-center">
           <CardHeader>
             <AlertTriangle className="w-10 h-10 mx-auto mb-3 text-muted-foreground" />
             <CardTitle>Survey Unavailable</CardTitle>
@@ -375,8 +375,13 @@ export default function TakeSurveyPage() {
     retryCount > MAX_RETRIES;
 
   return (
-    <div className="relative min-h-screen bg-background flex flex-col items-center justify-center p-4 overflow-hidden">
-      <div className="fixed top-4 right-4 z-50">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-4 py-8">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[-10rem] top-[-8rem] h-72 w-72 rounded-full bg-primary/12 blur-3xl" />
+        <div className="absolute bottom-[-10rem] right-[-4rem] h-80 w-80 rounded-full bg-chart-2/12 blur-3xl" />
+      </div>
+
+      <div className="fixed right-4 top-4 z-50 rounded-full border border-border/70 bg-background/76 p-1 shadow-[0_18px_40px_-30px_rgba(20,29,47,0.45)] backdrop-blur-xl">
         <ModeToggle />
       </div>
 
@@ -395,10 +400,10 @@ export default function TakeSurveyPage() {
       />
 
       {isRecordingPhase && (
-        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm z-0" />
+        <div className="absolute inset-0 z-0 bg-background/58 backdrop-blur-md" />
       )}
 
-      <div className="relative z-20 w-full max-w-2xl">
+      <div className="relative z-20 w-full max-w-3xl">
         {step === "welcome" && (
           <WelcomeStep
             survey={survey}
