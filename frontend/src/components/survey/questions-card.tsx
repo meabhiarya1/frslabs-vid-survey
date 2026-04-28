@@ -15,9 +15,12 @@ export default function SurveyQuestionsCard({
   questions,
 }: SurveyQuestionsCardProps) {
   return (
-    <Card>
+    <Card className="border-border/70 bg-card/88">
       <CardHeader>
-        <CardTitle>Questions</CardTitle>
+        <span className="eyebrow w-fit">Question Set</span>
+        <CardTitle className="font-display text-3xl leading-none">
+          Questions
+        </CardTitle>
 
         <CardDescription>
           The 5 Yes/No questions attached to this survey.
@@ -29,9 +32,9 @@ export default function SurveyQuestionsCard({
           {questions?.map((q, i: number) => (
             <li
               key={q.id}
-              className="p-4 border rounded-lg flex gap-4 items-center"
+              className="flex items-center gap-4 rounded-[1.5rem] border border-border/70 bg-background/62 p-4 shadow-[0_18px_40px_-30px_rgba(20,29,47,0.35)] backdrop-blur-sm"
             >
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-muted font-bold text-sm">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-bold text-sm text-primary shadow-[0_14px_30px_-20px_rgba(214,119,61,0.8)]">
                 {i + 1}
               </div>
 
