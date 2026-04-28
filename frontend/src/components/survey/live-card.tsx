@@ -24,15 +24,18 @@ export default function SurveyLiveCard({ surveyId }: SurveyLiveCardProps) {
   };
 
   return (
-    <Card className="bg-primary/5 border-primary/20">
+    <Card className="border-primary/20 bg-linear-to-br from-primary/8 via-card to-chart-2/10">
       <CardHeader>
-        <CardTitle className="text-lg text-primary">Survey is Live</CardTitle>
+        <span className="eyebrow w-fit">Published</span>
+        <CardTitle className="font-display text-3xl leading-none text-primary">
+          Survey is Live
+        </CardTitle>
 
         <CardDescription>Share this link with participants</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex items-center space-x-2">
-        <code className="flex-1 p-3 bg-background rounded border text-sm">
+      <CardContent className="flex flex-col gap-3 md:flex-row md:items-center">
+        <code className="flex-1 rounded-2xl border border-border/70 bg-background/74 p-3 text-sm shadow-[0_18px_40px_-30px_rgba(20,29,47,0.35)]">
           {url}
         </code>
 
