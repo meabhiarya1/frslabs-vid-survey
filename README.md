@@ -4,7 +4,7 @@ A privacy-first video survey platform. Users complete a 5-question Yes/No survey
 
 ## Demo
 
-Demo video link will be added here later.
+[Demo video link will be added here later.](https://github.com/user-attachments/assets/9a36ae3c-0d0c-4eb3-940d-d59dc8969431)
 
 ## Architecture & Tech Stack
 
